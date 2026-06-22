@@ -6,10 +6,9 @@ st.set_page_config(page_title="Kho Sheet Nhạc", layout="centered")
 st.markdown("""
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap');
         
-        html, body, [class*="css"] {
-            font-family: 'Noto Sans SC', sans-serif !important;
-        }
+        html, body, [class*="css"] { font-family: 'Noto Sans SC', sans-serif !important; }
     </style>
 """, unsafe_allow_html=True)
 
@@ -60,7 +59,8 @@ try:
         is_test = test_url.lower().startswith('http')
 
         # Chỉnh margin-bottom ở đây để thu hẹp khoảng cách xuống (ví dụ 0px hoặc âm -5px)
-        st.markdown(f'<h3 style="font-size: 24px; margin-bottom: -10px;">{ten_nhac}</h3>', unsafe_allow_html=True)  
+        # Sửa dòng hiển thị tiêu đề nhạc:
+        st.markdown(f'<h3 style="font-size: 28px; font-family: \'Ma Shan Zheng\', cursive; margin-bottom: -10px;">{ten_nhac}</h3>', unsafe_allow_html=True)  
         # Chỉnh margin-top ở đây để đẩy phần tác giả lên sát hơn
         st.markdown(f'<div style="font-size: 15px; font-weight: bold; color: #555; margin-top: 2px;">🎤 {casi} | ✍️ Trans: {trans}</div>', unsafe_allow_html=True)    
        
