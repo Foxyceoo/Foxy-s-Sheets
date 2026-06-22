@@ -54,7 +54,7 @@ try:
 
         st.markdown("---")
 
-        for index, row in filtered_df.iterrows():
+for index, row in filtered_df.iterrows():
         # ... (giữ nguyên các biến row.get)
 
         # 1. Tên bài hát: Giảm margin-top và margin-bottom để nó dính sát đường kẻ trên
