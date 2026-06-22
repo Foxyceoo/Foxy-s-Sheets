@@ -52,18 +52,26 @@ try:
         if search:
             filtered_df = filtered_df[filtered_df['Tên nhạc'].astype(str).str.contains(search, case=False, na=False)]
 
+        # Đường kẻ ngang phía trên nếu cần
         st.markdown("---")
-# Dòng for này nằm ngoài cùng, không thụt lề
+
     for index, row in filtered_df.iterrows():
-        # ... các biến ten_nhac, casi, trans ...
+        # Đảm bảo các biến này luôn nằm trong vòng lặp for
+        ten_nhac = str(row.get('Tên nhạc', 'Không tên')).replace('*', '')
+        loai = str(row.get('Loại', '')).strip()
+        casi = row.get('Ca sĩ / nhạc sĩ', 'N/A')
+        trans = row.get('Transcripted', 'N/A')
+        gia = str(row.get('VND', '0')).strip()
+        download_url = str(row.get('Download', '')).strip()
+        test_url = str(row.get('Test', '')).strip()
         
-        # 1. Tên nhạc: ép margin bằng 0
+        is_dl = download_url.lower().startswith('http')
+        is_test = test_url.lower().startswith('http')
+
+        # Hiển thị nội dung - Mọi biến đều đã được định nghĩa ở trên
         st.markdown(f'<h3 style="font-size: 24px; margin: 0px;">{ten_nhac}</h3>', unsafe_allow_html=True)
-        
-        # 2. Tác giả: ép margin bằng 0
         st.markdown(f'<div style="font-size: 15px; font-weight: bold; color: #555; margin: 0px;">🎤 {casi} | ✍️ Trans: {trans}</div>', unsafe_allow_html=True)
         
-        # 3. Khối nút: ép margin trên/dưới bằng 0
         st.markdown(f'''
             <div style="display: flex; gap: 5px; margin: 0px;">
                 <a href="{test_url if is_test else '#'}" target="_blank" style="flex: 1; text-decoration:none;">
@@ -77,7 +85,7 @@ try:
             </div>
         ''', unsafe_allow_html=True)
         
-        # 4. Đường kẻ: ép margin bằng 0 để nó nằm sát ngay dưới nút
+        # Đường kẻ ngang phía dưới
         st.markdown('<hr style="margin: 5px 0px; border: 0; border-top: 1px solid #ccc;">', unsafe_allow_html=True)
 
 except Exception as e:
