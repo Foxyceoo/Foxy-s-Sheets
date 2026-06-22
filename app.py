@@ -52,16 +52,16 @@ try:
         # Chỉnh margin-bottom ở đây để thu hẹp khoảng cách xuống (ví dụ 0px hoặc âm -5px)
         st.markdown(f'<h3 style="font-size: 24px; margin-bottom: -10px;">{ten_nhac}</h3>', unsafe_allow_html=True)  
         # Chỉnh margin-top ở đây để đẩy phần tác giả lên sát hơn
-        st.markdown(f'<div style="font-size: 15px; font-weight: bold; color: #555; margin-top: 5px;">🎤 {casi} | ✍️ Trans: {trans}</div>', unsafe_allow_html=True)    
+        st.markdown(f'<div style="font-size: 15px; font-weight: bold; color: #555; margin-top: 2px;">🎤 {casi} | ✍️ Trans: {trans}</div>', unsafe_allow_html=True)    
        
-        # Khối nút nằm dưới
+       # Khối nút nằm dưới
         st.markdown(f'''
-            <div style="display: flex; gap: 5px; margin-bottom: 10px;">
+            <div style="display: flex; gap: 5px; margin-top: 15px; margin-bottom: 10px;">
                 <a href="{test_url if is_test else '#'}" target="_blank" style="flex: 1; text-decoration:none;">
-                    <button style="width:100%; height:38px; border-radius:5px; border:none; background-color:{'#fd7e14' if is_test else '#d3d3d3'}; color:white; cursor:{'pointer' if is_test else 'not-allowed'};">▶</button>
+                    <button style="width:100%; height:38px; border-radius:5px; border:none; background-color:{'#ff4b4b' if is_test else '#d3d3d3'}; color:white; cursor:{'pointer' if is_test else 'not-allowed'};">▶</button>
                 </a>
                 <a href="{download_url if is_dl else '#'}" target="_blank" style="flex: 3; text-decoration:none;">
-                    <button style="width:100%; height:38px; border-radius:5px; border:none; background-color:{'#28a745' if is_dl else '#d3d3d3'}; color:white; cursor:{'pointer' if is_dl else 'not-allowed'};">
+                    <button style="width:100%; height:38px; border-radius:5px; border:none; background-color:{'#ff4b4b' if is_dl else '#d3d3d3'}; color:white; cursor:{'pointer' if is_dl else 'not-allowed'};">
                         {'Tải về' if is_dl and (loai in ['free', 'event']) else (f'Mua: {gia}' if is_dl else 'Đang cập nhật')}
                     </button>
                 </a>
