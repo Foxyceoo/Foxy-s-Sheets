@@ -48,7 +48,6 @@ try:
         casi = row.get('Ca sĩ / nhạc sĩ', 'N/A')
         trans = row.get('Transcripted', 'N/A')
         
-        # Lấy dữ liệu
         gia = str(row.get('VND', '0')).strip()
         download_url = str(row.get('Download', '')).strip()
         test_url = str(row.get('Test', '')).strip()
@@ -70,25 +69,20 @@ try:
             subcol1, subcol2 = st.columns([1, 4]) 
             
             with subcol1:
-               test_url = str(row.get('Test', '')).strip()
-               is_test_valid = (test_url and test_url != '#' and test_url.lower() != 'nan')
-    
-               if is_test_valid:
-                   # Nút có link (đỏ)
-                   st.markdown(f'''
-                       <a href="{test_url}" target="_blank" style="text-decoration:none;">
-                           <button style="width: 35px; height: 35px; border-radius: 50%; border: none; background-color: #ff4b4b; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; margin-top: 18px;">▶</button>
-                       </a>
-                   ''', unsafe_allow_html=True)
-               else:
-                   # Nút không có link (xám)
-                   st.markdown('''
-                       <button style="width: 35px; height: 35px; border-radius: 50%; border: none; background-color: #d3d3d3; color: white; cursor: not-allowed; display: flex; align-items: center; justify-content: center; margin-top: 18px;">▶</button>
-                   ''', unsafe_allow_html=True)
+                is_test_valid = (test_url and test_url != '#' and test_url.lower() != 'nan')
+                if is_test_valid:
+                    st.markdown(f'''
+                        <a href="{test_url}" target="_blank" style="text-decoration:none;">
+                            <button style="width: 35px; height: 35px; border-radius: 50%; border: none; background-color: #ff4b4b; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; margin-top: 18px;">▶</button>
+                        </a>
+                    ''', unsafe_allow_html=True)
+                else:
+                    st.markdown('''
+                        <button style="width: 35px; height: 35px; border-radius: 50%; border: none; background-color: #d3d3d3; color: white; cursor: not-allowed; display: flex; align-items: center; justify-content: center; margin-top: 18px;">▶</button>
+                    ''', unsafe_allow_html=True)
 
             with subcol2:
                 st.markdown('<div style="margin-top: 11px;">', unsafe_allow_html=True)
-                
                 is_valid_download = (download_url and download_url != '' and download_url != '#' and download_url.lower() != 'nan')
                 
                 if is_valid_download:
@@ -102,7 +96,6 @@ try:
                         st.link_button(f"Mua: {gia}", url=download_url)
                 else:
                     st.button("Đang cập nhật", disabled=True, key=unique_key)
-                
                 st.markdown('</div>', unsafe_allow_html=True)            
         st.markdown("---")
 
