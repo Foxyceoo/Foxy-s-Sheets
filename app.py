@@ -49,12 +49,11 @@ try:
         is_dl = download_url.lower().startswith('http')
         is_test = test_url.lower().startswith('http')
 
-        # Xóa bỏ biến tag và chỉ hiển thị tên nhạc
-        # Dòng 47 (Tên bài hát - đã chỉnh font-size)
-        st.markdown(f'<h3 style="font-size: 24px; margin-bottom: 5px;">{ten_nhac}</h3>', unsafe_allow_html=True)
-        # Dòng 48 (Tên ca sĩ & Trans - chỉnh đậm và kích thước)
-        st.markdown(f'<div style="font-size: 15px; font-weight: bold; color: #000;">🎤 {casi} | ✍️ Trans: {trans}</div>', unsafe_allow_html=True)
-            
+        # Chỉnh margin-bottom ở đây để thu hẹp khoảng cách xuống (ví dụ 0px hoặc âm -5px)
+        st.markdown(f'<h3 style="font-size: 24px; margin-bottom: -10px;">{ten_nhac}</h3>', unsafe_allow_html=True)  
+        # Chỉnh margin-top ở đây để đẩy phần tác giả lên sát hơn
+        st.markdown(f'<div style="font-size: 15px; font-weight: bold; color: #555; margin-top: 5px;">🎤 {casi} | ✍️ Trans: {trans}</div>', unsafe_allow_html=True)    
+       
         # Khối nút nằm dưới
         st.markdown(f'''
             <div style="display: flex; gap: 5px; margin-bottom: 10px;">
