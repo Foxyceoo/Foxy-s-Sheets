@@ -79,7 +79,7 @@ try:
              </div>
           ''', unsafe_allow_html=True)
             
-         st.markdown('<hr style="margin: 5px 0px; border: 0; border-top: 1px solid #ccc;">', unsafe_allow_html=True)
+        st.markdown('<hr style="margin: 5px 0px; border: 0; border-top: 1px solid #ccc;">', unsafe_allow_html=True)
 
 except Exception as e:
     st.error(f"Đã có lỗi xảy ra: {e}")
