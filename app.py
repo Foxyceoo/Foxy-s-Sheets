@@ -59,7 +59,7 @@ try:
         with c1:
             st.markdown('<a href="https://www.facebook.com/foxy.ceo.o" target="_blank" class="social-btn" style="background-color: #1877F2;"><i class="fab fa-facebook"></i> Facebook</a>', unsafe_allow_html=True)
         with c2:
-            st.markdown('<a href="www.youtube.com/@foxy.ceo.o" target="_blank" class="social-btn" style="background-color: #FF0000;"><i class="fab fa-youtube"></i> YouTube</a>', unsafe_allow_html=True)
+            st.markdown('<a href="https://www.youtube.com/@foxy.ceo.o" target="_blank" class="social-btn" style="background-color: #FF0000;"><i class="fab fa-youtube"></i> YouTube</a>', unsafe_allow_html=True)
         with c3:
             st.markdown('<a href="https://www.tiktok.com/@foxy.ceo.o" target="_blank" class="social-btn" style="background-color: #000000;"><i class="fab fa-tiktok"></i> TikTok</a>', unsafe_allow_html=True)
             
