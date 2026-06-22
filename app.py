@@ -43,6 +43,17 @@ try:
         🛠 **Focus:** Music optimization and relaxing melodies for the Sky community.  
         Don't forget to Subscribe and join our chill journey!  
         """)
+
+        # --- NÚT MẠNG XÃ HỘI DẠNG NÚT BẤM ---
+        c1, c2, c3 = st.columns(3)
+        with c1:
+            st.link_button("Facebook", "https://www.facebook.com/foxy.ceo.o")
+        with c2:
+            st.link_button("YouTube", "https://www.youtube.com/foxy.ceo.o")
+        with c3:
+            st.link_button("TikTok", "https://www.tiktok.com/foxy.ceo.o")
+            
+        st.markdown("---")
         
         # --- BỘ LỌC VÀ TÌM KIẾM ---
         tab_filter = st.radio("Chọn xem:", ["all", "event", "free", "txt", "nber"], horizontal=True)
