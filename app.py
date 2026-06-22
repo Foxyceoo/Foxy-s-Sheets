@@ -41,37 +41,34 @@ try:
         ten_nhac = str(row.get('Tên nhạc', 'Không tên')).replace('*', '')
         loai = str(row.get('Loại', '')).strip()
         casi = row.get('Ca sĩ / nhạc sĩ', 'N/A')
-        trans = row.get('Transcripted', 'N/A')
-        gia = str(row.get('VND', '0')).strip()
-        
-        # Lấy link sạch
         download_url = str(row.get('Download', '')).strip()
         test_url = str(row.get('Test', '')).strip()
-        
-        # Kiểm tra tính hợp lệ của link (phải bắt đầu bằng http)
         is_dl = download_url.lower().startswith('http')
         is_test = test_url.lower().startswith('http')
 
-        col1, col2 = st.columns([3, 1])
-        with col1:
+        # Chia cột: Cột trái (Tên nhạc + Ca sĩ) 70%, Cột phải (2 Nút) 30%
+        col_main, col_btn = st.columns([0.7, 0.3])
+        
+        with col_main:
             tag = {"event": "🎊", "nber": "🌟", "txt": "✨", "free": "✅"}.get(loai, "🎵")
             st.markdown(f"**{tag} {ten_nhac}**")
-            st.caption(f"🎤 {casi} | ✍️ Trans: {trans}")
+            st.caption(f"🎤 {casi}")
             
-        with col2:
-            # Tạo khối div chứa 2 nút
+        with col_btn:
+            # Dùng CSS Flexbox để ép 2 nút nằm sát nhau trên 1 hàng
             st.markdown(f'''
-                <div style="display: flex; gap: 5px;">
-                    <a href="{test_url}" target="_blank" style="flex: 1; text-decoration:none;">
-                        <button style="width:100%; height:38px; border-radius:5px; border:none; background-color:{'#ff4b4b' if is_test else '#d3d3d3'}; color:white;">▶</button>
+                <div style="display: flex; gap: 5px; margin-top: 10px;">
+                    <a href="{test_url if is_test else '#'}" target="_blank" style="flex: 1; text-decoration:none;">
+                        <button style="width:100%; height:35px; border-radius:5px; border:none; background-color:{'#ff4b4b' if is_test else '#d3d3d3'}; color:white; cursor:{'pointer' if is_test else 'not-allowed'};">▶</button>
                     </a>
-                    <a href="{download_url}" target="_blank" style="flex: 3; text-decoration:none;">
-                        <button style="width:100%; height:38px; border-radius:5px; border:none; background-color:{'#ff4b4b' if is_dl else '#d3d3d3'}; color:white;">
+                    <a href="{download_url if is_dl else '#'}" target="_blank" style="flex: 2; text-decoration:none;">
+                        <button style="width:100%; height:35px; border-radius:5px; border:none; background-color:{'#ff4b4b' if is_dl else '#d3d3d3'}; color:white; cursor:{'pointer' if is_dl else 'not-allowed'};">
                             {'Tải' if is_dl else '...'}
                         </button>
                     </a>
                 </div>
             ''', unsafe_allow_html=True)
+        
         st.markdown("---")
 
 except Exception as e:
