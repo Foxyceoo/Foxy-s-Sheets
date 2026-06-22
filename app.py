@@ -3,22 +3,12 @@ import pandas as pd
 
 st.set_page_config(page_title="Kho Sheet Nhạc", layout="centered")
 
-st.markdown("""
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap');
-        
-        html, body, [class*="css"] { font-family: 'Noto Sans SC', sans-serif !important; }
-    </style>
-""", unsafe_allow_html=True)
-
 # URL Sheet của cậu
 SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsybhqY890uEGLVqXyvC9Ovlfi-eXjjiIQ0jLMVDGc1TIaimWkLmT6F7RlI5DsWg/pub?gid=1844334473&single=true&output=csv"
 
-@st.cache_data(ttl=30) # Để TTL 30s giúp ổn định hơn
+@st.cache_data(ttl=30)
 def load_data():
     df_raw = pd.read_csv(SHEET_URL)
-    # Tìm dòng chứa Header
     for i in range(len(df_raw)):
         if 'Loại' in df_raw.iloc[i].values:
             df = df_raw[i+1:].copy()
@@ -58,15 +48,13 @@ try:
         is_dl = download_url.lower().startswith('http')
         is_test = test_url.lower().startswith('http')
 
-        # Chỉnh margin-bottom ở đây để thu hẹp khoảng cách xuống (ví dụ 0px hoặc âm -5px)
-        # Sửa dòng hiển thị tiêu đề nhạc:
-        st.markdown(f'<h3 style="font-size: 28px; font-family: \'Ma Shan Zheng\', cursive; margin-bottom: -10px;">{ten_nhac}</h3>', unsafe_allow_html=True)  
-        # Chỉnh margin-top ở đây để đẩy phần tác giả lên sát hơn
-        st.markdown(f'<div style="font-size: 15px; font-weight: bold; color: #555; margin-top: 2px;">🎤 {casi} | ✍️ Trans: {trans}</div>', unsafe_allow_html=True)    
-       
-       # Khối nút nằm dưới
+        # Cấu trúc: Tên nhạc (to) -> Tác giả (nhỏ) -> Nút (ngang)
+        st.markdown(f'<h3 style="font-size: 24px; margin-bottom: -10px;">{ten_nhac}</h3>', unsafe_allow_html=True)  
+        st.markdown(f'<div style="font-size: 15px; font-weight: bold; color: #555; margin-top: 2px; margin-bottom: 10px;">🎤 {casi} | ✍️ Trans: {trans}</div>', unsafe_allow_html=True)   
+        
+        # Khối nút
         st.markdown(f'''
-            <div style="display: flex; gap: 5px; margin-top: 15px; margin-bottom: 10px;">
+            <div style="display: flex; gap: 5px; margin-top: 5px; margin-bottom: 20px;">
                 <a href="{test_url if is_test else '#'}" target="_blank" style="flex: 1; text-decoration:none;">
                     <button style="width:100%; height:38px; border-radius:5px; border:none; background-color:{'#ff7400' if is_test else '#ffcab2'}; color:white; cursor:{'pointer' if is_test else 'not-allowed'};">▶</button>
                 </a>
