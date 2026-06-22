@@ -81,6 +81,8 @@ try:
                         <button style="width: 35px; height: 35px; border-radius: 50%; border: none; background-color: #d3d3d3; color: white; cursor: not-allowed; display: flex; align-items: center; justify-content: center; margin-top: 18px;">▶</button>
                     ''', unsafe_allow_html=True)
 
+                st.write(f"Bài: {ten_nhac} | Download URL: '{download_url}'")
+
             with subcol2:
                 st.markdown('<div style="margin-top: 11px;">', unsafe_allow_html=True)
                 is_valid_download = (download_url and download_url != '' and download_url != '#' and download_url.lower() != 'nan')
