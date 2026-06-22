@@ -39,7 +39,7 @@ try:
         st.markdown("""
         Welcome to **Foxy.HQ🦀** – The Official Home of Sky Music.
         Dedicated to creating and sharing the most chill Sky music sheets.
-        🎧 **Team:** CEO Foxy, [Tên bạn 1], & [Tên bạn 2]
+        🎧 **Team:** Foxy, Harinezumi, Yexer
         🛠 **Focus:** Music optimization and relaxing melodies for the Sky community.
         Don't forget to Subscribe and join our chill journey!
         """)
