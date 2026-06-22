@@ -58,10 +58,10 @@ try:
         st.markdown(f'''
             <div style="display: flex; gap: 5px; margin-bottom: 10px;">
                 <a href="{test_url if is_test else '#'}" target="_blank" style="flex: 1; text-decoration:none;">
-                    <button style="width:100%; height:38px; border-radius:5px; border:none; background-color:{'#ff4b4b' if is_test else '#d3d3d3'}; color:white; cursor:{'pointer' if is_test else 'not-allowed'};">▶</button>
+                    <button style="width:100%; height:38px; border-radius:5px; border:none; background-color:{'#fd7e14' if is_test else '#d3d3d3'}; color:white; cursor:{'pointer' if is_test else 'not-allowed'};">▶</button>
                 </a>
                 <a href="{download_url if is_dl else '#'}" target="_blank" style="flex: 3; text-decoration:none;">
-                    <button style="width:100%; height:38px; border-radius:5px; border:none; background-color:{'#ff4b4b' if is_dl else '#d3d3d3'}; color:white; cursor:{'pointer' if is_dl else 'not-allowed'};">
+                    <button style="width:100%; height:38px; border-radius:5px; border:none; background-color:{'#28a745' if is_dl else '#d3d3d3'}; color:white; cursor:{'pointer' if is_dl else 'not-allowed'};">
                         {'Tải về' if is_dl and (loai in ['free', 'event']) else (f'Mua: {gia}' if is_dl else 'Đang cập nhật')}
                     </button>
                 </a>
