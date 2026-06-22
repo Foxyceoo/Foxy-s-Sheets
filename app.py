@@ -78,7 +78,7 @@ try:
                     </a>
                     <a href="{download_url if is_dl else '#'}" target="_blank" style="flex: 3; text-decoration:none;">
                         <button style="width:100%; height:35px; border-radius:5px; border:none; background-color:{'#b2d600' if is_dl else '#cbd695'}; color:white; cursor:{'pointer' if is_dl else 'not-allowed'};">
-                            {'Tải về' if is_dl and (loai in ['free', 'event']) else (f'{gia}' if is_dl else 'Đang cập nhật')}
+                            {'Tải về' if is_dl and (loai in ['free', 'event']) else (f'Liên hệ mua: {gia}' if is_dl else 'Đang cập nhật')}
                         </button>
                     </a>
                 </div>
