@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # 1. Cấu hình trang
-st.set_page_config(page_title="Kho Sheet Nhạc", layout="centered")
+st.set_page_config(page_title="Foxy.HQ🦀", layout="centered")
 
 # URL Sheet
 SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsybhqY890uEGLVqXyvC9Ovlfi-eXjjiIQ0jLMVDGc1TIaimWkLmT6F7RlI5DsWg/pub?gid=1844334473&single=true&output=csv"
@@ -33,7 +33,7 @@ try:
     if df.empty:
         st.error("Không thể tải được dữ liệu từ Google Sheet.")
     else:
-        st.title("🎵 Kho Sheet Nhạc")
+        st.title("🎵Foxy.HQ🦀")
         
         tab_filter = st.radio("Chọn xem:", ["all","event","free","txt","nber"], horizontal=True)
         filtered_df = df.copy()
