@@ -83,7 +83,7 @@ try:
 
         # Hiển thị nội dung - Mọi biến đều đã được định nghĩa ở trên
         st.markdown(f'<h3 style="font-size: 24px; margin: 0px;">{ten_nhac}</h3>', unsafe_allow_html=True)
-        st.markdown(f'<div style="font-size: 15px; font-weight: bold; color: #555; margin: 0px;">🎤 {casi} | ✍️ Trans: {trans}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="font-size: 15px; font-weight: bold; color: #555; margin-top: 0px; margin-bottom: 5px;">🎤 {casi} | ✍️ Trans: {trans}</div>', unsafe_allow_html=True)
         
         st.markdown(f'''
             <div style="display: flex; gap: 5px; margin: 0px;">
