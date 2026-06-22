@@ -65,13 +65,21 @@ try:
             
         st.markdown("---")
         
-        # --- BỘ LỌC VÀ TÌM KIẾM ---
-        tab_filter = st.radio("Chọn xem:", ["all", "event", "free", "txt", "nber"], horizontal=True)
-        filtered_df = df.copy()
+        # --- BỘ LỌC DẠNG TAB ---
+        categories = ["all", "event", "free", "txt", "nber"]
+        tabs = st.tabs([cat.upper() for cat in categories])
         
-        if tab_filter != "all":
-            filtered_df = filtered_df[filtered_df['Loại'] == tab_filter]
+        # Lọc dữ liệu theo tab
+        selected_tab = "all"
+        for i, tab in enumerate(tabs):
+            with tab:
+                selected_tab = categories[i]
 
+        filtered_df = df.copy()
+        if selected_tab != "all":
+            filtered_df = filtered_df[filtered_df['Loại'] == selected_tab]
+
+        # Ô tìm kiếm
         search = st.text_input("🔍 Tìm tên bài hát...")
         if search:
             filtered_df = filtered_df[filtered_df['Tên nhạc'].astype(str).str.contains(search, case=False, na=False)]
@@ -92,12 +100,13 @@ try:
             is_test = test_url.lower().startswith('http')
             is_anchor = download_url.strip() == "#top"
 
+            # Logic nút
             if is_dl and (loai in ['free', 'event']):
                 btn_label, btn_link = 'Tải về', download_url
             elif is_anchor:
-                btn_label, btn_link = f'Liên hệ mua: {gia}', "#top"
+                btn_label, btn_link = f'Liên hệ mua: {gia} đ', "#top"
             elif is_dl:
-                btn_label, btn_link = f'Liên hệ mua: {gia}', download_url
+                btn_label, btn_link = f'Liên hệ mua: {gia} đ', download_url
             else:
                 btn_label, btn_link = 'Đang cập nhật', "#"
 
