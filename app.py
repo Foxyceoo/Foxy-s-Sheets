@@ -34,6 +34,19 @@ try:
         st.error("Không thể tải được dữ liệu từ Google Sheet.")
     else:
         st.title("🎵Foxy.HQ🦀")
+
+        # --- ĐOẠN GIỚI THIỆU MỚI ---
+        st.markdown("""
+        Welcome to Foxy.HQ🦀 – The Official Home of Sky Music.
+        Dedicated to creating and sharing the most chill Sky music sheets.
+        🎧 Team: CEO Foxy, [Tên bạn 1], & [Tên bạn 2]
+        🛠 Focus: Music optimization and relaxing melodies for the Sky community
+        Don't forget to Subscribe and join our chill journey!
+        """)
+        # ---------------------------
+        
+        tab_filter = st.radio("Chọn xem:", ["all","event","free","txt","nber"], horizontal=True)
+        # ... (phần còn lại của code)
         
         tab_filter = st.radio("Chọn xem:", ["all","event","free","txt","nber"], horizontal=True)
         filtered_df = df.copy()
