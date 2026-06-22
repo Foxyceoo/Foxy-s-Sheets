@@ -49,9 +49,8 @@ try:
         is_dl = download_url.lower().startswith('http')
         is_test = test_url.lower().startswith('http')
 
-        # Khôi phục layout: Nội dung trên, Nút dưới
-        tag = {"event": "🎊", "nber": "🌟", "txt": "✨", "free": "✅"}.get(loai, "🎵")
-        st.markdown(f"**{tag} {ten_nhac}**")
+        # Xóa bỏ biến tag và chỉ hiển thị tên nhạc
+        st.markdown(f"**{ten_nhac}**")
         st.caption(f"🎤 {casi} | ✍️ Trans: {trans}")
             
         # Khối nút nằm dưới
