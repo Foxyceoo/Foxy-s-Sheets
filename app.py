@@ -33,6 +33,8 @@ try:
     if df.empty:
         st.error("Không thể tải được dữ liệu từ Google Sheet.")
     else:
+        # Đặt Neo ở đầu trang
+        st.markdown('<div id="top"></div>', unsafe_allow_html=True)
         st.title("🎵 Foxy.HQ🦀")
 
         # --- ĐOẠN GIỚI THIỆU ---
@@ -44,14 +46,22 @@ try:
         Don't forget to Subscribe and join our chill journey!  
         """)
 
-        # --- NÚT MẠNG XÃ HỘI DẠNG NÚT BẤM ---
+        # --- NÚT MẠNG XÃ HỘI CÓ LOGO (FONT AWESOME) ---
+        st.markdown('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">', unsafe_allow_html=True)
+        st.markdown("""
+            <style>
+            .social-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; height: 38px; border-radius: 8px; text-decoration: none !important; color: white !important; font-weight: bold; }
+            .social-btn:hover { filter: brightness(1.1); }
+            </style>
+        """, unsafe_allow_html=True)
+
         c1, c2, c3 = st.columns(3)
         with c1:
-            st.link_button("Facebook", "https://www.facebook.com/foxy.ceo.o")
+            st.markdown('<a href="https://www.facebook.com/foxy.ceo.o" target="_blank" class="social-btn" style="background-color: #1877F2;"><i class="fab fa-facebook"></i> Facebook</a>', unsafe_allow_html=True)
         with c2:
-            st.link_button("YouTube", "https://www.youtube.com/foxy.ceo.o")
+            st.markdown('<a href="https://www.youtube.com/foxy.ceo.o" target="_blank" class="social-btn" style="background-color: #FF0000;"><i class="fab fa-youtube"></i> YouTube</a>', unsafe_allow_html=True)
         with c3:
-            st.link_button("TikTok", "https://www.tiktok.com/foxy.ceo.o")
+            st.markdown('<a href="https://www.tiktok.com/foxy.ceo.o" target="_blank" class="social-btn" style="background-color: #000000;"><i class="fab fa-tiktok"></i> TikTok</a>', unsafe_allow_html=True)
             
         st.markdown("---")
         
@@ -80,22 +90,27 @@ try:
             
             is_dl = download_url.lower().startswith('http')
             is_test = test_url.lower().startswith('http')
+            is_anchor = download_url.strip() == "#top"
 
-            # Hiển thị tiêu đề
+            if is_dl and (loai in ['free', 'event']):
+                btn_label, btn_link = 'Tải về', download_url
+            elif is_anchor:
+                btn_label, btn_link = f'Liên hệ mua: {gia} đ', "#top"
+            elif is_dl:
+                btn_label, btn_link = f'Liên hệ mua: {gia} đ', download_url
+            else:
+                btn_label, btn_link = 'Đang cập nhật', "#"
+
             st.markdown(f'<h3 style="font-size: 24px; margin-top: 10px; margin-bottom: 0px;">{ten_nhac}</h3>', unsafe_allow_html=True)
-            # Thông tin ca sĩ
             st.markdown(f'<div style="font-size: 15px; font-weight: bold; color: #555; margin-top: 0px; margin-bottom: 5px;">🎤 {casi} | ✍️ Trans: {trans}</div>', unsafe_allow_html=True)
-            
-            # Logic nút bấm (Đã gộp Liên hệ mua vào đây)
-            btn_label = 'Tải về' if is_dl and (loai in ['free', 'event']) else ('Liên hệ mua' if is_dl else 'Đang cập nhật')
             
             st.markdown(f'''
                 <div style="display: flex; gap: 5px; margin-top: 0px; margin-bottom: 5px;">
                     <a href="{test_url if is_test else '#'}" target="_blank" style="flex: 1; text-decoration:none;">
                         <button style="width:100%; height:35px; border-radius:5px; border:none; background-color:{'#ff7400' if is_test else '#ffcab2'}; color:white; cursor:{'pointer' if is_test else 'not-allowed'};">▶</button>
                     </a>
-                    <a href="{download_url if is_dl else '#'}" target="_blank" style="flex: 3; text-decoration:none;">
-                        <button style="width:100%; height:35px; border-radius:5px; border:none; background-color:{'#b2d600' if is_dl else '#cbd695'}; color:white; cursor:pointer;">
+                    <a href="{btn_link}" target="{"_blank" if not is_anchor else "_self"}" style="flex: 3; text-decoration:none;">
+                        <button style="width:100%; height:35px; border-radius:5px; border:none; background-color:{'#b2d600' if is_dl or is_anchor else '#cbd695'}; color:white; cursor:pointer;">
                             {btn_label}
                         </button>
                     </a>
