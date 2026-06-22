@@ -95,9 +95,9 @@ try:
             if is_dl and (loai in ['free', 'event']):
                 btn_label, btn_link = 'Tải về', download_url
             elif is_anchor:
-                btn_label, btn_link = f'Liên hệ mua: {gia} đ', "#top"
+                btn_label, btn_link = f'Liên hệ mua: {gia}', "#top"
             elif is_dl:
-                btn_label, btn_link = f'Liên hệ mua: {gia} đ', download_url
+                btn_label, btn_link = f'Liên hệ mua: {gia}', download_url
             else:
                 btn_label, btn_link = 'Đang cập nhật', "#"
 
