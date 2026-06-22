@@ -69,7 +69,8 @@ try:
             subcol1, subcol2 = st.columns([1, 4]) 
             
             with subcol1:
-                is_test_valid = (test_url and test_url != '#' and test_url.lower() != 'nan')
+                # Kiểm tra link Test
+                is_test_valid = (test_url and test_url != '#' and test_url.lower() != 'nan' and len(test_url) > 5)
                 if is_test_valid:
                     st.markdown(f'''
                         <a href="{test_url}" target="_blank" style="text-decoration:none;">
@@ -81,23 +82,25 @@ try:
                         <button style="width: 35px; height: 35px; border-radius: 50%; border: none; background-color: #d3d3d3; color: white; cursor: not-allowed; display: flex; align-items: center; justify-content: center; margin-top: 18px;">▶</button>
                     ''', unsafe_allow_html=True)
 
-                st.write(f"Bài: {ten_nhac} | Download URL: '{download_url}'")
-
             with subcol2:
                 st.markdown('<div style="margin-top: 11px;">', unsafe_allow_html=True)
-                is_valid_download = (download_url and download_url != '' and download_url != '#' and download_url.lower() != 'nan')
+                
+                # Kiểm tra link Download
+                is_valid_download = (download_url and download_url != '#' and download_url.lower() != 'nan' and len(download_url) > 5)
                 
                 if is_valid_download:
-                    if loai == 'free' or loai == 'event':
-                        st.markdown(f'''
-                            <a href="{download_url}" target="_blank" style="text-decoration:none;">
-                                <button style="width:100%; border-radius:5px; border:none; padding:5px; background-color:#ff4b4b; color:white; cursor:pointer;">Tải về</button>
-                            </a>
-                        ''', unsafe_allow_html=True)
-                    else:
-                        st.link_button(f"Mua: {gia}", url=download_url)
+                    btn_text = "Tải về" if (loai == 'free' or loai == 'event') else f"Mua: {gia}"
+                    st.markdown(f'''
+                        <a href="{download_url}" target="_blank" style="text-decoration:none;">
+                            <button style="width:100%; border-radius:5px; border:none; padding:6px; background-color:#ff4b4b; color:white; cursor:pointer;">{btn_text}</button>
+                        </a>
+                    ''', unsafe_allow_html=True)
                 else:
-                    st.button("Đang cập nhật", disabled=True, key=unique_key)
+                    # Nút xám không nhấn được
+                    st.markdown('''
+                        <button style="width:100%; border-radius:5px; border:none; padding:6px; background-color:#d3d3d3; color:white; cursor:not-allowed;">Đang cập nhật</button>
+                    ''', unsafe_allow_html=True)
+                
                 st.markdown('</div>', unsafe_allow_html=True)            
         st.markdown("---")
 
