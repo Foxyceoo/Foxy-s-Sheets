@@ -48,6 +48,9 @@ try:
         # --- ĐƯỜNG KẺ PHÍA TRÊN NẰM TRONG ELSE ĐỂ KHÔNG BỊ LỖI ---
         st.markdown("---")
 
+        # --- ĐƯỜNG KẺ PHÍA TRÊN NẰM TRONG ELSE ĐỂ KHÔNG BỊ LỖI ---
+        st.markdown("---")
+
         for index, row in filtered_df.iterrows():
             ten_nhac = str(row.get('Tên nhạc', 'Không tên')).replace('*', '')
             loai = str(row.get('Loại', '')).strip()
@@ -60,26 +63,25 @@ try:
             is_dl = download_url.lower().startswith('http')
             is_test = test_url.lower().startswith('http')
 
-            # Tên nhạc: margin-bottom: 0px là chìa khóa
-        st.markdown(f'<h3 style="font-size: 25px; margin-top: 0px; margin-bottom: 0px;">{ten_nhac}</h3>', unsafe_allow_html=True)
-        
-        # Tác giả: margin-top: 0px ép nó dính sát lên trên
-        st.markdown(f'<div style="font-size: 18px; font-weight: bold; color: #555; margin-top: 0px; margin-bottom: 10px;">🎤 {casi} | ✍️ Trans: {trans}</div>', unsafe_allow_html=True)
+            # TẤT CẢ CÁC DÒNG NÀY PHẢI THỤT VÀO TRONG VÒNG LẶP FOR
+            st.markdown(f'<h3 style="font-size: 25px; margin-top: 0px; margin-bottom: 0px;">{ten_nhac}</h3>', unsafe_allow_html=True)
             
-        st.markdown(f'''
-            <div style="display: flex; gap: 5px; margin: 0px;">
-                <a href="{test_url if is_test else '#'}" target="_blank" style="flex: 1; text-decoration:none;">
-                    <button style="width:100%; height:35px; border-radius:5px; border:none; background-color:{'#ff7400' if is_test else '#ffcab2'}; color:white; cursor:{'pointer' if is_test else 'not-allowed'};">▶</button>
-                </a>              
-                <a href="{download_url if is_dl else '#'}" target="_blank" style="flex: 3; text-decoration:none;">
-                    <button style="width:100%; height:35px; border-radius:5px; border:none; background-color:{'#b2d600' if is_dl else '#cbd695'}; color:white; cursor:{'pointer' if is_dl else 'not-allowed'};">
-                        {'Tải về' if is_dl and (loai in ['free', 'event']) else (f'Mua: {gia}' if is_dl else 'Đang cập nhật')}
-                    </button>
-                </a>
-             </div>
-          ''', unsafe_allow_html=True)
-            
-        st.markdown('<hr style="margin: 5px 0px; border: 0; border-top: 1px solid #ccc;">', unsafe_allow_html=True)
+            st.markdown(f'<div style="font-size: 18px; font-weight: bold; color: #555; margin-top: 0px; margin-bottom: 10px;">🎤 {casi} | ✍️ Trans: {trans}</div>', unsafe_allow_html=True)
+                
+            st.markdown(f'''
+                <div style="display: flex; gap: 5px; margin: 0px;">
+                    <a href="{test_url if is_test else '#'}" target="_blank" style="flex: 1; text-decoration:none;">
+                        <button style="width:100%; height:35px; border-radius:5px; border:none; background-color:{'#ff7400' if is_test else '#ffcab2'}; color:white; cursor:{'pointer' if is_test else 'not-allowed'};">▶</button>
+                    </a>            
+                    <a href="{download_url if is_dl else '#'}" target="_blank" style="flex: 3; text-decoration:none;">
+                        <button style="width:100%; height:35px; border-radius:5px; border:none; background-color:{'#b2d600' if is_dl else '#cbd695'}; color:white; cursor:{'pointer' if is_dl else 'not-allowed'};">
+                            {'Tải về' if is_dl and (loai in ['free', 'event']) else (f'Mua: {gia}' if is_dl else 'Đang cập nhật')}
+                        </button>
+                    </a>
+                </div>
+            ''', unsafe_allow_html=True)
+                
+            st.markdown('<hr style="margin: 5px 0px; border: 0; border-top: 1px solid #ccc;">', unsafe_allow_html=True)
 
 except Exception as e:
     st.error(f"Đã có lỗi xảy ra: {e}")
