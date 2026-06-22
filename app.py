@@ -5,7 +5,7 @@ st.set_page_config(page_title="Kho Sheet Nhạc", layout="centered")
 
 SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsybhqY890uEGLVqXyvC9Ovlfi-eXjjiIQ0jLMVDGc1TIaimWkLmT6F7RlI5DsWg/pub?gid=1844334473&single=true&output=csv"
 
-@st.cache_data(ttl=600)
+@st.cache_data(ttl=60)
 def load_data():
     df_raw = pd.read_csv(SHEET_URL)
     # Tìm dòng chứa Header
