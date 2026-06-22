@@ -59,19 +59,23 @@ try:
             st.caption(f"🎤 {casi} | ✍️ Trans: {trans}")
             
         with col2:
-            # Dùng st.columns để chia nút, không dùng HTML phức tạp để tránh lỗi render
-            s1, s2 = st.columns([1, 2])
+            # Dùng 2 cột bằng nhau (1:1) để nút luôn cân đối
+            s1, s2 = st.columns(2)
+            
             with s1:
+                # Nút Test (Play) - dùng use_container_width=True để ép nút đầy cột
                 if is_test:
-                    st.link_button("▶", url=test_url, key=f"test_{index}")
+                    st.link_button("▶", url=test_url, key=f"test_{index}", use_container_width=True)
                 else:
-                    st.button("▶", disabled=True, key=f"no_test_{index}")
+                    st.button("▶", disabled=True, key=f"no_test_{index}", use_container_width=True)
+            
             with s2:
+                # Nút Download - dùng chữ ngắn gọn cho mobile
                 if is_dl:
-                    label = "Tải về" if loai in ['free', 'event'] else f"Mua: {gia}"
-                    st.link_button(label, url=download_url, key=f"dl_{index}")
+                    label = "Tải" if loai in ['free', 'event'] else f"{gia}"
+                    st.link_button(label, url=download_url, key=f"dl_{index}", use_container_width=True)
                 else:
-                    st.button("Cập nhật", disabled=True, key=f"no_dl_{index}")
+                    st.button("...", disabled=True, key=f"no_dl_{index}", use_container_width=True)
         st.markdown("---")
 
 except Exception as e:
