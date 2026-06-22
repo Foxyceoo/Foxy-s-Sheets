@@ -33,22 +33,19 @@ try:
     if df.empty:
         st.error("Không thể tải được dữ liệu từ Google Sheet.")
     else:
-        st.title("🎵Foxy.HQ🦀")
+        st.title("🎵 Foxy.HQ🦀")
 
-        # --- ĐOẠN GIỚI THIỆU MỚI ---
+        # --- ĐOẠN GIỚI THIỆU ---
         st.markdown("""
-        Welcome to Foxy.HQ🦀 – The Official Home of Sky Music.
+        Welcome to **Foxy.HQ🦀** – The Official Home of Sky Music.
         Dedicated to creating and sharing the most chill Sky music sheets.
-        🎧 Team: CEO Foxy, [Tên bạn 1], & [Tên bạn 2]
-        🛠 Focus: Music optimization and relaxing melodies for the Sky community
+        🎧 **Team:** CEO Foxy, [Tên bạn 1], & [Tên bạn 2]
+        🛠 **Focus:** Music optimization and relaxing melodies for the Sky community.
         Don't forget to Subscribe and join our chill journey!
         """)
-        # ---------------------------
         
-        tab_filter = st.radio("Chọn xem:", ["all","event","free","txt","nber"], horizontal=True)
-        # ... (phần còn lại của code)
-        
-        tab_filter = st.radio("Chọn xem:", ["all","event","free","txt","nber"], horizontal=True)
+        # --- BỘ LỌC VÀ TÌM KIẾM ---
+        tab_filter = st.radio("Chọn xem:", ["all", "event", "free", "txt", "nber"], horizontal=True)
         filtered_df = df.copy()
         
         if tab_filter != "all":
@@ -58,13 +55,9 @@ try:
         if search:
             filtered_df = filtered_df[filtered_df['Tên nhạc'].astype(str).str.contains(search, case=False, na=False)]
 
-        # --- ĐƯỜNG KẺ PHÍA TRÊN NẰM TRONG ELSE ĐỂ KHÔNG BỊ LỖI ---
         st.markdown("---")
 
-        # --- ĐƯỜNG KẺ PHÍA TRÊN NẰM TRONG ELSE ĐỂ KHÔNG BỊ LỖI ---
-        st.markdown("---")
-
-        # Vòng lặp hiển thị bài hát
+        # --- VÒNG LẶP HIỂN THỊ BÀI HÁT ---
         for index, row in filtered_df.iterrows():
             ten_nhac = str(row.get('Tên nhạc', 'Không tên')).replace('*', '')
             loai = str(row.get('Loại', '')).strip()
@@ -77,27 +70,28 @@ try:
             is_dl = download_url.lower().startswith('http')
             is_test = test_url.lower().startswith('http')
 
-            # 1. Tên bài hát: ép margin-bottom bằng 0
+            # Hiển thị tiêu đề
             st.markdown(f'<h3 style="font-size: 24px; margin-top: 10px; margin-bottom: 0px;">{ten_nhac}</h3>', unsafe_allow_html=True)
-            
-            # 2. Thông tin ca sĩ/trans: ép margin bằng 0
+            # Thông tin ca sĩ
             st.markdown(f'<div style="font-size: 15px; font-weight: bold; color: #555; margin-top: 0px; margin-bottom: 5px;">🎤 {casi} | ✍️ Trans: {trans}</div>', unsafe_allow_html=True)
             
-            # 3. Khối nút bấm: ép margin-top bằng 0
+            # Logic nút bấm (Đã gộp Liên hệ mua vào đây)
+            btn_label = 'Tải về' if is_dl and (loai in ['free', 'event']) else ('Liên hệ mua' if is_dl else 'Đang cập nhật')
+            
             st.markdown(f'''
                 <div style="display: flex; gap: 5px; margin-top: 0px; margin-bottom: 5px;">
                     <a href="{test_url if is_test else '#'}" target="_blank" style="flex: 1; text-decoration:none;">
                         <button style="width:100%; height:35px; border-radius:5px; border:none; background-color:{'#ff7400' if is_test else '#ffcab2'}; color:white; cursor:{'pointer' if is_test else 'not-allowed'};">▶</button>
                     </a>
                     <a href="{download_url if is_dl else '#'}" target="_blank" style="flex: 3; text-decoration:none;">
-                        <button style="width:100%; height:35px; border-radius:5px; border:none; background-color:{'#b2d600' if is_dl else '#cbd695'}; color:white; cursor:{'pointer' if is_dl else 'not-allowed'};">
-                            {'Tải về' if is_dl and (loai in ['free', 'event']) else (f'Liên hệ mua: {gia}' if is_dl else 'Đang cập nhật')}
+                        <button style="width:100%; height:35px; border-radius:5px; border:none; background-color:{'#b2d600' if is_dl else '#cbd695'}; color:white; cursor:pointer;">
+                            {btn_label}
                         </button>
                     </a>
                 </div>
             ''', unsafe_allow_html=True)
             
-            # 4. Thay thế đường kẻ mặc định bằng một đường kẻ tùy chỉnh mỏng hơn
             st.markdown('<hr style="margin: 0px 0px 10px 0px; border: 0; border-top: 1px solid #ddd;">', unsafe_allow_html=True)
+
 except Exception as e:
     st.error(f"Đã có lỗi xảy ra: {e}")
