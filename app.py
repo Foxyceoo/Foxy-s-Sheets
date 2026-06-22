@@ -60,8 +60,11 @@ try:
             is_dl = download_url.lower().startswith('http')
             is_test = test_url.lower().startswith('http')
 
-            st.markdown(f'<h3 style="font-size: 24px; margin: 0px;">{ten_nhac}</h3>', unsafe_allow_html=True)
-            st.markdown(f'<div style="font-size: 15px; font-weight: bold; color: #555; margin: 0px;">🎤 {casi} | ✍️ Trans: {trans}</div>', unsafe_allow_html=True)
+            # Tên nhạc: margin-bottom: 0px là chìa khóa
+        st.markdown(f'<h3 style="font-size: 25px; margin-top: 0px; margin-bottom: 0px;">{ten_nhac}</h3>', unsafe_allow_html=True)
+        
+        # Tác giả: margin-top: 0px ép nó dính sát lên trên
+        st.markdown(f'<div style="font-size: 18px; font-weight: bold; color: #555; margin-top: 0px; margin-bottom: 10px;">🎤 {casi} | ✍️ Trans: {trans}</div>', unsafe_allow_html=True)
             
             st.markdown(f'''
                 <div style="display: flex; gap: 5px; margin: 0px;">
