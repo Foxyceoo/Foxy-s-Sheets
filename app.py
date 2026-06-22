@@ -85,7 +85,7 @@ try:
         ''', unsafe_allow_html=True)
         
         st.markdown('<hr style="margin: 5px 0;">', unsafe_allow_html=True)
-            st.markdown("---")
+        st.markdown("---")
 
 except Exception as e:
     st.error(f"Đã có lỗi xảy ra: {e}")
