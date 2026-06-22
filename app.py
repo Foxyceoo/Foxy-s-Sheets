@@ -50,8 +50,10 @@ try:
         is_test = test_url.lower().startswith('http')
 
         # Xóa bỏ biến tag và chỉ hiển thị tên nhạc
-        st.markdown(f"**{ten_nhac}**")
-        st.caption(f"🎤 {casi} | ✍️ Trans: {trans}")
+        # Dòng 47 (Tên bài hát - đã chỉnh font-size)
+        st.markdown(f'<h3 style="font-size: 24px; margin-bottom: 5px;">{ten_nhac}</h3>', unsafe_allow_html=True)
+        # Dòng 48 (Tên ca sĩ & Trans - chỉnh đậm và kích thước)
+        st.markdown(f'<div style="font-size: 15px; font-weight: bold; color: #000;">🎤 {casi} | ✍️ Trans: {trans}</div>', unsafe_allow_html=True)
             
         # Khối nút nằm dưới
         st.markdown(f'''
