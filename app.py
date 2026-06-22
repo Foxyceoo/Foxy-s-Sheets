@@ -3,6 +3,16 @@ import pandas as pd
 
 st.set_page_config(page_title="Kho Sheet Nhạc", layout="centered")
 
+st.markdown("""
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap');
+        
+        html, body, [class*="css"] {
+            font-family: 'Noto Sans SC', sans-serif !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 # URL Sheet của cậu
 SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsybhqY890uEGLVqXyvC9Ovlfi-eXjjiIQ0jLMVDGc1TIaimWkLmT6F7RlI5DsWg/pub?gid=1844334473&single=true&output=csv"
 
