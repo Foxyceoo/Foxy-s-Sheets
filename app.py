@@ -59,23 +59,19 @@ try:
             st.caption(f"🎤 {casi} | ✍️ Trans: {trans}")
             
         with col2:
-            # Dùng 2 cột bằng nhau (1:1) để nút luôn cân đối
-            s1, s2 = st.columns(2)
-            
-            with s1:
-                # Nút Test (Play) - dùng use_container_width=True để ép nút đầy cột
-                if is_test:
-                    st.link_button("▶", url=test_url, key=f"test_{index}", use_container_width=True)
-                else:
-                    st.button("▶", disabled=True, key=f"no_test_{index}", use_container_width=True)
-            
-            with s2:
-                # Nút Download - dùng chữ ngắn gọn cho mobile
-                if is_dl:
-                    label = "Tải" if loai in ['free', 'event'] else f"{gia}"
-                    st.link_button(label, url=download_url, key=f"dl_{index}", use_container_width=True)
-                else:
-                    st.button("...", disabled=True, key=f"no_dl_{index}", use_container_width=True)
+            # Tạo khối div chứa 2 nút
+            st.markdown(f'''
+                <div style="display: flex; gap: 5px;">
+                    <a href="{test_url}" target="_blank" style="flex: 1; text-decoration:none;">
+                        <button style="width:100%; height:38px; border-radius:5px; border:none; background-color:{'#ff4b4b' if is_test else '#d3d3d3'}; color:white;">▶</button>
+                    </a>
+                    <a href="{download_url}" target="_blank" style="flex: 3; text-decoration:none;">
+                        <button style="width:100%; height:38px; border-radius:5px; border:none; background-color:{'#ff4b4b' if is_dl else '#d3d3d3'}; color:white;">
+                            {'Tải' if is_dl else '...'}
+                        </button>
+                    </a>
+                </div>
+            ''', unsafe_allow_html=True)
         st.markdown("---")
 
 except Exception as e:
