@@ -3,11 +3,13 @@ import pandas as pd
 
 st.set_page_config(page_title="Kho Sheet Nhạc", layout="centered")
 
+# URL Sheet của cậu
 SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsybhqY890uEGLVqXyvC9Ovlfi-eXjjiIQ0jLMVDGc1TIaimWkLmT6F7RlI5DsWg/pub?gid=1844334473&single=true&output=csv"
 
-@st.cache_data(ttl=60)
+@st.cache_data(ttl=30) # Để TTL 30s giúp ổn định hơn
 def load_data():
     df_raw = pd.read_csv(SHEET_URL)
+    # Tìm dòng chứa Header
     for i in range(len(df_raw)):
         if 'Loại' in df_raw.iloc[i].values:
             df = df_raw[i+1:].copy()
@@ -41,12 +43,14 @@ try:
         casi = row.get('Ca sĩ / nhạc sĩ', 'N/A')
         trans = row.get('Transcripted', 'N/A')
         gia = str(row.get('VND', '0')).strip()
+        
+        # Lấy link sạch
         download_url = str(row.get('Download', '')).strip()
         test_url = str(row.get('Test', '')).strip()
         
-        # Kiểm tra điều kiện link
-        is_dl_valid = download_url.startswith('http')
-        is_test_valid = test_url.startswith('http')
+        # Kiểm tra tính hợp lệ của link (phải bắt đầu bằng http)
+        is_dl = download_url.lower().startswith('http')
+        is_test = test_url.lower().startswith('http')
 
         col1, col2 = st.columns([3, 1])
         with col1:
@@ -55,20 +59,19 @@ try:
             st.caption(f"🎤 {casi} | ✍️ Trans: {trans}")
             
         with col2:
-            s1, s2 = st.columns([1, 1]) # Chia đều cột cho nút
+            # Dùng st.columns để chia nút, không dùng HTML phức tạp để tránh lỗi render
+            s1, s2 = st.columns([1, 2])
             with s1:
-                # Nút Test (Play)
-                if is_test_valid:
-                    st.link_button("▶", url=test_url, use_container_width=True)
+                if is_test:
+                    st.link_button("▶", url=test_url, key=f"test_{index}")
                 else:
-                    st.button("▶", disabled=True, use_container_width=True, key=f"t_{index}")
+                    st.button("▶", disabled=True, key=f"no_test_{index}")
             with s2:
-                # Nút Download/Mua
-                if is_dl_valid:
-                    btn_label = "Tải về" if loai in ['free', 'event'] else f"💰 {gia}"
-                    st.link_button(btn_label, url=download_url, use_container_width=True)
+                if is_dl:
+                    label = "Tải về" if loai in ['free', 'event'] else f"Mua: {gia}"
+                    st.link_button(label, url=download_url, key=f"dl_{index}")
                 else:
-                    st.button("...", disabled=True, use_container_width=True, key=f"d_{index}")
+                    st.button("Cập nhật", disabled=True, key=f"no_dl_{index}")
         st.markdown("---")
 
 except Exception as e:
