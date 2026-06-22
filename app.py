@@ -55,24 +55,17 @@ try:
         st.markdown("---")
 # Dòng for này nằm ngoài cùng, không thụt lề
     for index, row in filtered_df.iterrows():
-        # TẤT CẢ CÁC DÒNG NÀY PHẢI ĐƯỢC THỤT VÀO TRONG (có khoảng trống ở đầu dòng)
-        ten_nhac = str(row.get('Tên nhạc', 'Không tên')).replace('*', '')
-        loai = str(row.get('Loại', '')).strip()
-        casi = row.get('Ca sĩ / nhạc sĩ', 'N/A')
-        trans = row.get('Transcripted', 'N/A')
-        gia = str(row.get('VND', '0')).strip()
-        download_url = str(row.get('Download', '')).strip()
-        test_url = str(row.get('Test', '')).strip()
+        # ... các biến ten_nhac, casi, trans ...
         
-        is_dl = download_url.lower().startswith('http')
-        is_test = test_url.lower().startswith('http')
-
-        # Cấu trúc đã chỉnh khoảng cách
-        st.markdown(f'<h3 style="font-size: 24px; margin-top: 5px; margin-bottom: -5px;">{ten_nhac}</h3>', unsafe_allow_html=True)  
-        st.markdown(f'<div style="font-size: 15px; font-weight: bold; color: #555; margin-top: 5px; margin-bottom: 5px;">🎤 {casi} | ✍️ Trans: {trans}</div>', unsafe_allow_html=True)   
+        # 1. Tên nhạc: ép margin bằng 0
+        st.markdown(f'<h3 style="font-size: 24px; margin: 0px;">{ten_nhac}</h3>', unsafe_allow_html=True)
         
+        # 2. Tác giả: ép margin bằng 0
+        st.markdown(f'<div style="font-size: 15px; font-weight: bold; color: #555; margin: 0px;">🎤 {casi} | ✍️ Trans: {trans}</div>', unsafe_allow_html=True)
+        
+        # 3. Khối nút: ép margin trên/dưới bằng 0
         st.markdown(f'''
-            <div style="display: flex; gap: 5px; margin-top: 5px; margin-bottom: 5px;">
+            <div style="display: flex; gap: 5px; margin: 0px;">
                 <a href="{test_url if is_test else '#'}" target="_blank" style="flex: 1; text-decoration:none;">
                     <button style="width:100%; height:35px; border-radius:5px; border:none; background-color:{'#ff7400' if is_test else '#ffcab2'}; color:white; cursor:{'pointer' if is_test else 'not-allowed'};">▶</button>
                 </a>
@@ -84,8 +77,8 @@ try:
             </div>
         ''', unsafe_allow_html=True)
         
-        st.markdown('<hr style="margin: 5px 0;">', unsafe_allow_html=True)
-        st.markdown("---")
+        # 4. Đường kẻ: ép margin bằng 0 để nó nằm sát ngay dưới nút
+        st.markdown('<hr style="margin: 5px 0px; border: 0; border-top: 1px solid #ccc;">', unsafe_allow_html=True)
 
 except Exception as e:
     st.error(f"Đã có lỗi xảy ra: {e}")
