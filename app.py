@@ -53,17 +53,24 @@ try:
             filtered_df = filtered_df[filtered_df['Tên nhạc'].astype(str).str.contains(search, case=False, na=False)]
 
         st.markdown("---")
-
- for index, row in filtered_df.iterrows():
-        # ... (giữ nguyên các biến row.get)
-
-        # 1. Tên bài hát: Giảm margin-top và margin-bottom để nó dính sát đường kẻ trên
-        st.markdown(f'<h3 style="font-size: 24px; margin-top: 5px; margin-bottom: -5px;">{ten_nhac}</h3>', unsafe_allow_html=True)  
+# Dòng for này nằm ngoài cùng, không thụt lề
+    for index, row in filtered_df.iterrows():
+        # TẤT CẢ CÁC DÒNG NÀY PHẢI ĐƯỢC THỤT VÀO TRONG (có khoảng trống ở đầu dòng)
+        ten_nhac = str(row.get('Tên nhạc', 'Không tên')).replace('*', '')
+        loai = str(row.get('Loại', '')).strip()
+        casi = row.get('Ca sĩ / nhạc sĩ', 'N/A')
+        trans = row.get('Transcripted', 'N/A')
+        gia = str(row.get('VND', '0')).strip()
+        download_url = str(row.get('Download', '')).strip()
+        test_url = str(row.get('Test', '')).strip()
         
-        # 2. Tác giả: Giữ khoảng cách nhỏ với tên bài hát
+        is_dl = download_url.lower().startswith('http')
+        is_test = test_url.lower().startswith('http')
+
+        # Cấu trúc đã chỉnh khoảng cách
+        st.markdown(f'<h3 style="font-size: 24px; margin-top: 5px; margin-bottom: -5px;">{ten_nhac}</h3>', unsafe_allow_html=True)  
         st.markdown(f'<div style="font-size: 15px; font-weight: bold; color: #555; margin-top: 5px; margin-bottom: 5px;">🎤 {casi} | ✍️ Trans: {trans}</div>', unsafe_allow_html=True)   
         
-        # 3. Khối nút: Giảm margin-top (khoảng cách tới tên tác giả) và margin-bottom (khoảng cách tới đường kẻ dưới)
         st.markdown(f'''
             <div style="display: flex; gap: 5px; margin-top: 5px; margin-bottom: 5px;">
                 <a href="{test_url if is_test else '#'}" target="_blank" style="flex: 1; text-decoration:none;">
@@ -77,7 +84,6 @@ try:
             </div>
         ''', unsafe_allow_html=True)
         
-        # 4. Đường kẻ: Giảm bớt khoảng cách của đường kẻ (nếu cần thiết)
         st.markdown('<hr style="margin: 5px 0;">', unsafe_allow_html=True)
             st.markdown("---")
 
