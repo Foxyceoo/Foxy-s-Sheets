@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # 1. Cấu hình trang
-st.set_page_config(page_title="Foxy.HQ🦀", layout="centered")
+st.set_page_config(page_title="Foxy.HQ", layout="centered")
 
 # URL Sheet
 SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsybhqY890uEGLVqXyvC9Ovlfi-eXjjiIQ0jLMVDGc1TIaimWkLmT6F7RlI5DsWg/pub?gid=1844334473&single=true&output=csv"
@@ -35,11 +35,11 @@ try:
     else:
         # Đặt Neo ở đầu trang
         st.markdown('<div id="top"></div>', unsafe_allow_html=True)
-        st.title("🎵 Foxy.HQ🦀")
+        st.title("🎵 Foxy.HQ")
 
         # --- ĐOẠN GIỚI THIỆU ---
         st.markdown("""
-        Welcome to **Foxy.HQ🦀** – The Official Foxy's Home!!!🦀  
+        Welcome to **Foxy.HQ** – The Official Foxy's Home!!!  
         Dedicated to creating and sharing the most chill Sky music sheets.  
         🎧 **Team:** Foxy, Harinezumi, Yexer  
         🛠 **Focus:** Music optimization and relaxing melodies for the Sky community.  
