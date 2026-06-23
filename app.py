@@ -35,7 +35,7 @@ try:
     else:
         # Đặt Neo ở đầu trang
         st.markdown('<div id="top"></div>', unsafe_allow_html=True)
-        st.title("---Foxy.HQ---")
+        st.title("--- Foxy.HQ ---")
 
         # --- ĐOẠN GIỚI THIỆU ---
         st.markdown("""
