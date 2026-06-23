@@ -115,10 +115,10 @@ try:
                     st.markdown(f'''
                         <div style="display: flex; gap: 5px; margin-top: 0px; margin-bottom: 5px;">
                             <a href="{test_url if is_test else '#'}" target="_blank" style="flex: 1; text-decoration:none;">
-                                <button style="width:100%; height:35px; border-radius:5px; border:none; background-color:{'#ff7400' if is_test else '#ffcab2'}; color:white; cursor:{'pointer' if is_test else 'not-allowed'};">▶</button>
+                                <button style="width:100%; height:35px; border-radius:5px; border:none; background-color:{'#FF0000' if is_test else '#FFB2B2'}; color:white; cursor:{'pointer' if is_test else 'not-allowed'};">▶</button>
                             </a>
                             <a href="{btn_link}" target="{"_blank" if not is_anchor else "_self"}" style="flex: 3; text-decoration:none;">
-                                <button style="width:100%; height:35px; border-radius:5px; border:none; background-color:{'#b2d600' if is_dl or is_anchor else '#cbd695'}; color:white; cursor:pointer;">
+                                <button style="width:100%; height:35px; border-radius:5px; border:none; background-color:{'#00008C' if is_dl or is_anchor else '#62628C'}; color:white; cursor:pointer;">
                                     {btn_label}
                                 </button>
                             </a>
