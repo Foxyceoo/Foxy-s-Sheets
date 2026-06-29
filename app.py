@@ -61,7 +61,7 @@ try:
                     <tr><th>Loại hình</th><th>Đơn giá</th><th>Cọc</th></tr>
                     <tr><td>Sheet thường (txt)</td><td>500đ / khuông</td><td>-</td></tr>
                     <tr><td>Sheet số (nber)</td><td>750đ / khuông</td><td>10.000đ</td></tr>
-                    <tr><td>Cảm âm</td><td>1.000đ / khuông</td><td>20.000đ</td></tr>
+                    <tr><td>Cảm âm (tạm thời không nhận)</td><td>1.000đ / khuông</td><td>20.000đ</td></tr>
                 </table>
             """, unsafe_allow_html=True)
             st.caption("*== Đối với Cảm âm, Foxy sẽ báo giá chính xác sau khi hoàn thành ==*")
