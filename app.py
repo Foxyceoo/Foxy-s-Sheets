@@ -47,8 +47,8 @@ try:
         st.markdown("""
             <style>
             div[data-testid="stExpander"] {
-                border: 2px solid #00008C !important;
-                border-radius: 20px;
+                border: 5px solid #00008C !important;
+                border-radius: 10px;
             }
             </style>
         """, unsafe_allow_html=True)
