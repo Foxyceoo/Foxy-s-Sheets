@@ -38,11 +38,11 @@ try:
 
         # --- ĐOẠN GIỚI THIỆU ---
         st.markdown("""
-        Welcome to **---Foxy.HQ---** – The Official Foxy's Home!!!  
-        Dedicated to creating and sharing the most chill Sky music sheets.  
-           **Team:** Foxy, Harinezumi, Yexer  
-           **Focus:** Music optimization and relaxing melodies for the Sky community.  
-        Don't forget to Subscribe and join our chill journey!  
+        Chào mừng đến với Foxy.HQ – Ngôi nhà chính thức của Foxy!!!  
+        Chuyên sáng tạo và chia sẻ những sheet nhạc Sky "chill" nhất  
+        Team: Foxy, Harinezumi, Yexer  
+        Focus: Tối ưu hóa âm nhạc và mang đến những giai điệu thư giãn cho cộng đồng Sky  
+        Đừng quên Đăng ký và tham gia vào hành trình thư giãn này cùng chúng mình nhé!  
         """)
 
         # --- NÚT MẠNG XÃ HỘI ---
