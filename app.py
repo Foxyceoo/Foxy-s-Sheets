@@ -79,7 +79,7 @@ try:
         st.markdown("---")
 
         st.markdown("""
-        ***DANH SÁCH SHEET**  
+        **DANH SÁCH SHEET**  
         """)
         
         # --- BỘ LỌC DẠNG TAB ---
@@ -116,7 +116,7 @@ try:
                     btn_link = download_url if (is_dl and not is_anchor) else "#top"
 
                     st.markdown(f'<h3 style="font-size: 20px; margin: 5px 0;">{ten_nhac}</h3>', unsafe_allow_html=True)
-                    st.markdown(f'<div style="font-size: 14px; color: #555;">{casi} | Trans: {trans}</div>', unsafe_allow_html=True)
+                    st.markdown(f'<div style="font-size: 15px; color: #7F7F7F;">{casi} | Trans: {trans}</div>', unsafe_allow_html=True)
                     
                     st.markdown(f'''
                         <div style="display: flex; gap: 5px; margin-top: 5px; margin-bottom: 10px;">
