@@ -48,7 +48,7 @@ try:
             <style>
             div[data-testid="stExpander"] {
                 border: 2px solid #00008C !important;
-                border-radius: 10px;
+                border-radius: 20px;
             }
             </style>
         """, unsafe_allow_html=True)
@@ -61,10 +61,10 @@ try:
                 .price-table th, .price-table td { padding: 10px; border: 1px solid #444; text-align: left; }
                 </style>
                 <table class="price-table">
-                    <tr><th>Loại hình</th><th>Đơn giá</th><th>Ghi chú</th></tr>
-                    <tr><td>Sheet thường (txt)</td><td>500đ / khuông</td><td>-</td></tr>
-                    <tr><td>Sheet số (nber)</td><td>750đ / khuông</td><td>Cọc 10.000đ</td></tr>
-                    <tr><td>Cảm âm</td><td>1.000đ / khuông</td><td>Cọc 20.000đ</td></tr>
+                    <tr><th>Loại hình</th><th>Đơn giá</th><th>Cọc</th></tr>
+                    <tr><td>Sheet thường (txt)</td><td>500đ/khuông</td><td>-</td></tr>
+                    <tr><td>Sheet số (nber)</td><td>750đ/khuông</td><td>10.000đ</td></tr>
+                    <tr><td>Cảm âm</td><td>1.000đ/khuông</td><td>20.000đ</td></tr>
                 </table>
             """, unsafe_allow_html=True)
             st.caption("⚠️ *Đối với Cảm âm, Foxy sẽ báo giá chính xác sau khi hoàn thành.*")
@@ -112,7 +112,7 @@ try:
                     btn_link = download_url if (is_dl and not is_anchor) else "#top"
 
                     st.markdown(f'<h3 style="font-size: 20px; margin: 5px 0;">{ten_nhac}</h3>', unsafe_allow_html=True)
-                    st.markdown(f'<div style="font-size: 14px; color: #555;">🎤 {casi} | ✍️ Trans: {trans} | 📅 Upd: {upd}</div>', unsafe_allow_html=True)
+                    st.markdown(f'<div style="font-size: 14px; color: #555;">{casi} | Trans: {trans}</div>', unsafe_allow_html=True)
                     
                     st.markdown(f'''
                         <div style="display: flex; gap: 5px; margin-top: 5px; margin-bottom: 10px;">
@@ -124,7 +124,7 @@ try:
                             </a>
                         </div>
                     ''', unsafe_allow_html=True)
-                    st.markdown('<hr style="margin:5px 0;">', unsafe_allow_html=True)
+                    st.markdown('<hr style="margin:10px 0;">', unsafe_allow_html=True)
 
 except Exception as e:
     st.error(f"Đã có lỗi xảy ra: {e}")
