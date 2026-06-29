@@ -60,6 +60,17 @@ try:
         with c3: st.markdown('<a href="https://www.tiktok.com/@foxy.ceo.o" target="_blank" class="social-btn" style="background-color: #000000;"><i class="fab fa-tiktok"></i> TikTok</a>', unsafe_allow_html=True)
             
         st.markdown("---")
+
+        # --- NÚT BẢNG GIÁ CHI TIẾT ---
+        with st.expander("💰 BẢNG GIÁ DỊCH VỤ"):
+        st.markdown("""
+        | Loại hình | Đơn giá | Ghi chú |
+        | :--- | :--- | :--- |
+        | **Sheet thường (txt)** | 500đ / khuông | - |
+        | **Sheet số (nber)** | 750đ / khuông | Cọc 10.000đ |
+        | **Cảm âm** | 1.000đ / khuông | Cọc 20.000đ |
+        """)
+        st.caption("⚠️ *Lưu ý: Đối với Cảm âm, Foxy sẽ báo giá chính xác sau khi hoàn thành.*")
         
         # --- BỘ LỌC DẠNG TAB ---
         categories = ["all", "event", "free", "txt", "nber", "upd"]
