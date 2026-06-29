@@ -101,7 +101,7 @@ try:
 
                     st.markdown(f'<h3 style="font-size: 24px; margin-top: 10px; margin-bottom: 0px;">{ten_nhac}</h3>', unsafe_allow_html=True)
                     # <--- Thêm tag Upd vào dòng hiển thị
-                    st.markdown(f'<div style="font-size: 15px; font-weight: bold; color: #555; margin-top: 0px; margin-bottom: 5px;">{casi} | Trans: {trans} | Upd: {upd}</div>', unsafe_allow_html=True)
+                    st.markdown(f'<div style="font-size: 15px; font-weight: bold; color: #555; margin-top: 0px; margin-bottom: 5px;">{casi} | Trans: {trans}</div>', unsafe_allow_html=True)
                     
                     st.markdown(f'''
                         <div style="display: flex; gap: 5px; margin-top: 0px; margin-bottom: 5px;">
