@@ -87,7 +87,7 @@ try:
         for i, tab in enumerate(tabs):
             cat = categories[i]
             with tab:
-                search = st.text_input(f"Tìm tên bài hát trong mục {cat.upper()}...", key=f"search_{cat}")
+                search = st.text_input(f"Tìm tên bài hát trong mục **{cat.upper()}** (viết không dấu)", key=f"search_{cat}")
                 current_df = tab_data[cat]
                 if search:
                     current_df = current_df[current_df['Tên nhạc'].astype(str).str.contains(search, case=False, na=False)]
