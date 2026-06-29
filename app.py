@@ -36,41 +36,32 @@ try:
         st.markdown('<div id="top"></div>', unsafe_allow_html=True)
         st.title("--- Foxy.HQ ---")
 
-        # --- ĐOẠN GIỚI THIỆU ---
         st.markdown("""
         Chào mừng đến với Foxy.HQ – Ngôi nhà chính thức của Foxy!!!  
         Chuyên sáng tạo và chia sẻ những sheet nhạc Sky "chill" nhất  
         Team: Foxy, Harinezumi, Yexer  
         Focus: Tối ưu hóa âm nhạc và mang đến những giai điệu thư giãn cho cộng đồng Sky  
-        Đừng quên Đăng ký và tham gia vào hành trình thư giãn này cùng chúng mình nhé!  
         """)
+
+        # --- NÚT BẢNG GIÁ ---
+        with st.expander("💰 BẢNG GIÁ DỊCH VỤ"):
+            st.markdown("""
+            | Loại hình | Đơn giá | Ghi chú |
+            | :--- | :--- | :--- |
+            | **Sheet thường (txt)** | 500đ / khuông | - |
+            | **Sheet số (nber)** | 750đ / khuông | Cọc 10.000đ |
+            | **Cảm âm** | 1.000đ / khuông | Cọc 20.000đ |
+            """)
+            st.caption("⚠️ *Đối với Cảm âm, Foxy sẽ báo giá chính xác sau khi hoàn thành.*")
 
         # --- NÚT MẠNG XÃ HỘI ---
         st.markdown('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">', unsafe_allow_html=True)
-        st.markdown("""
-            <style>
-            .social-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; height: 38px; border-radius: 8px; text-decoration: none !important; color: white !important; font-weight: bold; }
-            .social-btn:hover { filter: brightness(1.1); }
-            </style>
-        """, unsafe_allow_html=True)
-
         c1, c2, c3 = st.columns(3)
-        with c1: st.markdown('<a href="https://www.facebook.com/foxy.ceo.o" target="_blank" class="social-btn" style="background-color: #1877F2;"><i class="fab fa-facebook"></i> Facebook</a>', unsafe_allow_html=True)
-        with c2: st.markdown('<a href="https://www.youtube.com/@foxy.ceo.o" target="_blank" class="social-btn" style="background-color: #FF0000;"><i class="fab fa-youtube"></i> YouTube</a>', unsafe_allow_html=True)
-        with c3: st.markdown('<a href="https://www.tiktok.com/@foxy.ceo.o" target="_blank" class="social-btn" style="background-color: #000000;"><i class="fab fa-tiktok"></i> TikTok</a>', unsafe_allow_html=True)
+        with c1: st.markdown('<a href="https://www.facebook.com/foxy.ceo.o" target="_blank" style="display:block; text-align:center; padding:10px; background:#1877F2; color:white; border-radius:8px; text-decoration:none; font-weight:bold;"><i class="fab fa-facebook"></i> Facebook</a>', unsafe_allow_html=True)
+        with c2: st.markdown('<a href="https://www.youtube.com/@foxy.ceo.o" target="_blank" style="display:block; text-align:center; padding:10px; background:#FF0000; color:white; border-radius:8px; text-decoration:none; font-weight:bold;"><i class="fab fa-youtube"></i> YouTube</a>', unsafe_allow_html=True)
+        with c3: st.markdown('<a href="https://www.tiktok.com/@foxy.ceo.o" target="_blank" style="display:block; text-align:center; padding:10px; background:#000000; color:white; border-radius:8px; text-decoration:none; font-weight:bold;"><i class="fab fa-tiktok"></i> TikTok</a>', unsafe_allow_html=True)
             
         st.markdown("---")
-
-        # --- NÚT BẢNG GIÁ CHI TIẾT ---
-        with st.expander("💰 BẢNG GIÁ DỊCH VỤ"):
-        st.markdown("""
-        | Loại hình | Đơn giá | Ghi chú |
-        | :--- | :--- | :--- |
-        | **Sheet thường (txt)** | 500đ / khuông | - |
-        | **Sheet số (nber)** | 750đ / khuông | Cọc 10.000đ |
-        | **Cảm âm** | 1.000đ / khuông | Cọc 20.000đ |
-        """)
-        st.caption("⚠️ *Lưu ý: Đối với Cảm âm, Foxy sẽ báo giá chính xác sau khi hoàn thành.*")
         
         # --- BỘ LỌC DẠNG TAB ---
         categories = ["all", "event", "free", "txt", "nber", "upd"]
@@ -81,22 +72,19 @@ try:
             if cat != "all":
                 tab_data[cat] = df[df['Loại'] == cat]
 
-        # Hiển thị nội dung
         for i, tab in enumerate(tabs):
             cat = categories[i]
             with tab:
-                search = st.text_input(f"Tìm tên bài hát trong mục {cat.upper()}... (viết không dấu)", key=f"search_{cat}")
+                search = st.text_input(f"Tìm tên bài hát trong mục {cat.upper()}...", key=f"search_{cat}")
                 current_df = tab_data[cat]
                 if search:
                     current_df = current_df[current_df['Tên nhạc'].astype(str).str.contains(search, case=False, na=False)]
                 
-                # --- VÒNG LẶP HIỂN THỊ ---
-                for index, row in current_df.iterrows():
+                for _, row in current_df.iterrows():
                     ten_nhac = str(row.get('Tên nhạc', 'Không tên')).replace('*', '')
-                    loai = str(row.get('Loại', '')).strip()
                     casi = row.get('Ca sĩ / nhạc sĩ', 'N/A')
                     trans = row.get('Transcripted', 'N/A')
-                    upd = row.get('Upd', 'N/A') # <--- Lấy giá trị cột Upd
+                    upd = row.get('Upd', 'N/A')
                     gia = str(row.get('VND', '0')).strip()
                     download_url = str(row.get('Download', '')).strip()
                     test_url = str(row.get('Test', '')).strip()
@@ -105,28 +93,24 @@ try:
                     is_test = test_url.lower().startswith('http')
                     is_anchor = download_url.strip() == "#top"
 
-                    if is_dl and (loai in ['free', 'event']): btn_label, btn_link = 'Tải về', download_url
-                    elif is_anchor: btn_label, btn_link = f'Liên hệ mua: {gia} VND', "#top"
-                    elif is_dl: btn_label, btn_link = f'Liên hệ mua: {gia} VND', download_url
-                    else: btn_label, btn_link = 'Đang cập nhật', "#"
+                    btn_label = f'Liên hệ mua: {gia} VND' if not is_dl or is_anchor else 'Tải về'
+                    btn_link = download_url if (is_dl and not is_anchor) else "#top"
 
-                    st.markdown(f'<h3 style="font-size: 24px; margin-top: 10px; margin-bottom: 0px;">{ten_nhac}</h3>', unsafe_allow_html=True)
-                    # <--- Thêm tag Upd vào dòng hiển thị
-                    st.markdown(f'<div style="font-size: 15px; font-weight: bold; color: #555; margin-top: 0px; margin-bottom: 5px;">{casi} | Trans: {trans}</div>', unsafe_allow_html=True)
+                    st.markdown(f'<h3 style="font-size: 20px; margin: 5px 0;">{ten_nhac}</h3>', unsafe_allow_html=True)
+                    # HIỂN THỊ DÒNG THÔNG TIN CÓ UPD
+                    st.markdown(f'<div style="font-size: 14px; color: #555;">🎤 {casi} | ✍️ Trans: {trans} | 📅 Upd: {upd}</div>', unsafe_allow_html=True)
                     
                     st.markdown(f'''
-                        <div style="display: flex; gap: 5px; margin-top: 0px; margin-bottom: 5px;">
-                            <a href="{test_url if is_test else '#'}" target="_blank" style="flex: 1; text-decoration:none;">
-                                <button style="width:100%; height:35px; border-radius:5px; border:none; background-color:{'#FF0000' if is_test else '#FFB2B2'}; color:white; cursor:{'pointer' if is_test else 'not-allowed'};">▶</button>
+                        <div style="display: flex; gap: 5px; margin-top: 5px; margin-bottom: 10px;">
+                            <a href="{test_url if is_test else '#'}" target="_blank" style="flex:1; text-decoration:none;">
+                                <button style="width:100%; border:none; padding:8px; background:{'#FF0000' if is_test else '#ddd'}; color:white; border-radius:5px;">▶</button>
                             </a>
-                            <a href="{btn_link}" target="{"_blank" if not is_anchor else "_self"}" style="flex: 3; text-decoration:none;">
-                                <button style="width:100%; height:35px; border-radius:5px; border:none; background-color:{'#00008C' if is_dl or is_anchor else '#62628C'}; color:white; cursor:pointer;">
-                                    {btn_label}
-                                </button>
+                            <a href="{btn_link}" target="{"_blank" if not is_anchor else "_self"}" style="flex:3; text-decoration:none;">
+                                <button style="width:100%; border:none; padding:8px; background:#00008C; color:white; border-radius:5px;">{btn_label}</button>
                             </a>
                         </div>
                     ''', unsafe_allow_html=True)
-                    st.markdown('<hr style="margin: 0px 0px 10px 0px; border: 0; border-top: 1px solid #ddd;">', unsafe_allow_html=True)
+                    st.markdown('<hr style="margin:5px 0;">', unsafe_allow_html=True)
 
 except Exception as e:
     st.error(f"Đã có lỗi xảy ra: {e}")
