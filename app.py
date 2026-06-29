@@ -43,32 +43,29 @@ try:
         Focus: Tối ưu hóa âm nhạc và mang đến những giai điệu thư giãn cho cộng đồng Sky  
         """)
 
-        # --- NÚT BẢNG GIÁ (Đã sửa lại thụt lề) ---
-        # --- NÚT BẢNG GIÁ (Có khung viền) ---
+        # CSS đổi màu viền cho expander (Đặt ở đây để nó áp dụng cho toàn trang)
+        st.markdown("""
+            <style>
+            div[data-testid="stExpander"] {
+                border: 2px solid #00008C !important;
+                border-radius: 10px;
+            }
+            </style>
+        """, unsafe_allow_html=True)
+
+        # --- NÚT BẢNG GIÁ ---
         with st.expander("💰 BẢNG GIÁ DỊCH VỤ"):
             st.markdown("""
                 <style>
-                .custom-box {
-                    border: 2px solid #00008C; /* Viền màu xanh đậm */
-                    border-radius: 10px;
-                    padding: 15px;
-                    background-color: #fcfcfc;
-                }
-                .price-table { width: 100%; border-collapse: collapse; color: #333; }
-                .price-table th:nth-child(1) { background-color: #00008C; color: white; padding: 10px; }
-                .price-table th:nth-child(2) { background-color: #FF0000; color: white; padding: 10px; }
-                .price-table th:nth-child(3) { background-color: #00008C; color: white; padding: 10px; }
-                .price-table td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+                .price-table { width: 100%; border-collapse: collapse; }
+                .price-table th, .price-table td { padding: 10px; border: 1px solid #444; text-align: left; }
                 </style>
-                
-                <div class="custom-box">
-                    <table class="price-table">
-                        <tr><th>Loại hình</th><th>Đơn giá</th><th>Ghi chú</th></tr>
-                        <tr><td>Sheet thường (txt)</td><td>500đ / khuông</td><td>-</td></tr>
-                        <tr><td>Sheet số (nber)</td><td>750đ / khuông</td><td>Cọc 10.000đ</td></tr>
-                        <tr><td>Cảm âm</td><td>1.000đ / khuông</td><td>Cọc 20.000đ</td></tr>
-                    </table>
-                </div>
+                <table class="price-table">
+                    <tr><th>Loại hình</th><th>Đơn giá</th><th>Ghi chú</th></tr>
+                    <tr><td>Sheet thường (txt)</td><td>500đ / khuông</td><td>-</td></tr>
+                    <tr><td>Sheet số (nber)</td><td>750đ / khuông</td><td>Cọc 10.000đ</td></tr>
+                    <tr><td>Cảm âm</td><td>1.000đ / khuông</td><td>Cọc 20.000đ</td></tr>
+                </table>
             """, unsafe_allow_html=True)
             st.caption("⚠️ *Đối với Cảm âm, Foxy sẽ báo giá chính xác sau khi hoàn thành.*")
 
