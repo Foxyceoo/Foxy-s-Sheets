@@ -43,15 +43,23 @@ try:
         Focus: Tối ưu hóa âm nhạc và mang đến những giai điệu thư giãn cho cộng đồng Sky  
         """)
 
-        # --- NÚT BẢNG GIÁ ---
+        # --- NÚT BẢNG GIÁ (Đã sửa lại thụt lề) ---
         with st.expander("💰 BẢNG GIÁ DỊCH VỤ"):
             st.markdown("""
-            | Loại hình | Đơn giá | Ghi chú |
-            | :--- | :--- | :--- |
-            | **Sheet thường (txt)** | 500đ / khuông | - |
-            | **Sheet số (nber)** | 750đ / khuông | Cọc 10.000đ |
-            | **Cảm âm** | 1.000đ / khuông | Cọc 20.000đ |
-            """)
+                <style>
+                .price-table { width: 100%; border-collapse: collapse; color: #333; }
+                .price-table th:nth-child(1) { background-color: #00008C; color: white; padding: 10px; }
+                .price-table th:nth-child(2) { background-color: #FF0000; color: white; padding: 10px; }
+                .price-table th:nth-child(3) { background-color: #00008C; color: white; padding: 10px; }
+                .price-table td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+                </style>
+                <table class="price-table">
+                    <tr><th>Loại hình</th><th>Đơn giá</th><th>Ghi chú</th></tr>
+                    <tr><td>Sheet thường (txt)</td><td>500đ / khuông</td><td>-</td></tr>
+                    <tr><td>Sheet số (nber)</td><td>750đ / khuông</td><td>Cọc 10.000đ</td></tr>
+                    <tr><td>Cảm âm</td><td>1.000đ / khuông</td><td>Cọc 20.000đ</td></tr>
+                </table>
+            """, unsafe_allow_html=True)
             st.caption("⚠️ *Đối với Cảm âm, Foxy sẽ báo giá chính xác sau khi hoàn thành.*")
 
         # --- NÚT MẠNG XÃ HỘI ---
@@ -97,7 +105,6 @@ try:
                     btn_link = download_url if (is_dl and not is_anchor) else "#top"
 
                     st.markdown(f'<h3 style="font-size: 20px; margin: 5px 0;">{ten_nhac}</h3>', unsafe_allow_html=True)
-                    # HIỂN THỊ DÒNG THÔNG TIN CÓ UPD
                     st.markdown(f'<div style="font-size: 14px; color: #555;">🎤 {casi} | ✍️ Trans: {trans} | 📅 Upd: {upd}</div>', unsafe_allow_html=True)
                     
                     st.markdown(f'''
