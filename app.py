@@ -95,8 +95,8 @@ try:
                     is_anchor = download_url.strip() == "#top"
 
                     if is_dl and (loai in ['free', 'event']): btn_label, btn_link = 'Tải về', download_url
-                    elif is_anchor: btn_label, btn_link = f'Liên hệ mua: {gia}', "#top"
-                    elif is_dl: btn_label, btn_link = f'Liên hệ mua: {gia}', download_url
+                    elif is_anchor: btn_label, btn_link = f'Liên hệ mua: {gia} VND', "#top"
+                    elif is_dl: btn_label, btn_link = f'Liên hệ mua: {gia} VND', download_url
                     else: btn_label, btn_link = 'Đang cập nhật', "#"
 
                     st.markdown(f'<h3 style="font-size: 24px; margin-top: 10px; margin-bottom: 0px;">{ten_nhac}</h3>', unsafe_allow_html=True)
