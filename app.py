@@ -119,16 +119,17 @@ try:
                     st.markdown(f'<div style="font-size: 15px; color: #7F7F7F;">{casi} | Trans: {trans}</div>', unsafe_allow_html=True)
                     
                     st.markdown(f'''
-                        <div style="display: flex; gap: 5px; margin-top: 5px; margin-bottom: 10px;">
-                            <a href="{test_url if is_test else '#'}" target="_blank" style="flex:1; text-decoration:none;">
-                                <button style="width:100%; border:none; padding:8px; background:{'#FF0000' if is_test else '#ddd'}; color:white; border-radius:5px;">▶</button>
-                            </a>
-                            <a href="{btn_link}" target="{"_blank" if not is_anchor else "_self"}" style="flex:3; text-decoration:none;">
-                                <button style="width:100%; border:none; padding:8px; background:#00008C; color:white; border-radius:5px;">{btn_label}</button>
-                            </a>
-                        </div>
-                    ''', unsafe_allow_html=True)
-                    st.markdown('<hr style="margin:10px 0;">', unsafe_allow_html=True)
+                <div style="display: flex; gap: 5px; margin-top: 0px; margin-bottom: 5px;">
+                    <a href="{test_url if is_test else '#'}" target="_blank" style="flex: 1; text-decoration:none;">
+                        <button style="width:100%; height:35px; border-radius:5px; border:none; background-color:{'#FF0000' if is_test else '#7FFF7F'}; color:white; cursor:{'pointer' if is_test else 'not-allowed'};">▶</button>
+                    </a>
+                    <a href="{btn_link}" target="{"_blank" if not is_anchor else "_self"}" style="flex: 3; text-decoration:none;">
+                        <button style="width:100%; height:35px; border-radius:5px; border:none; background-color:{'#00008C' if is_dl or is_anchor else '#7FFF7F'}; color:white; cursor:pointer;">
+                            {btn_label}
+                        </button>
+                    </a>
+                </div>
+            ''', unsafe_allow_html=True)
 
 except Exception as e:
     st.error(f"Đã có lỗi xảy ra: {e}")
