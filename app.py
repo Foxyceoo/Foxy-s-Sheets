@@ -48,7 +48,7 @@ try:
             <style>
             div[data-testid="stExpander"] {
                 border: 3px solid #00008C !important;
-                border-radius: 15px;
+                border-radius: 12px;
             }
             </style>
         """, unsafe_allow_html=True)
