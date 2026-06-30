@@ -91,6 +91,12 @@ try:
                 current_df = tab_data[cat]
                 if search:
                     current_df = current_df[current_df['Tên nhạc'].astype(str).str.contains(search, case=False, na=False)]
+                if cat == "nber":
+                    st.image("https://github.com/Foxyceooo/Foxy-s-Sheets/raw/main/Mau.jpg", 
+                             caption="Ảnh mẫu sheet số", 
+                             use_container_width=True)
+                
+                current_df = tab_data[cat]
                 
                 for _, row in current_df.iterrows():
                     # ĐỊNH NGHĨA BIẾN CẦN THIẾT
