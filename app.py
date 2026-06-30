@@ -92,7 +92,7 @@ try:
                 if search:
                     current_df = current_df[current_df['Tên nhạc'].astype(str).str.contains(search, case=False, na=False)]
                 if cat == "nber":
-                    st.image("https://github.com/Foxyceooo/Foxy-s-Sheets/raw/main/Mau.jpg", 
+                    st.image("https://github.com/Foxyceoo/Foxy-s-Sheets/raw/main/Mau.jpg", 
                              caption="Ảnh mẫu sheet số", 
                              use_container_width=True)
                 
