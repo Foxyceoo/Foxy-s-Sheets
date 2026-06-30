@@ -93,7 +93,7 @@ try:
                 if cat == "nber":
                     with st.expander("Xem ảnh mẫu Sheet số (NBER)"):
                         st.markdown("""
-                        <img src="https://github.com/Foxyceoo/Foxy-s-Sheets/raw/main/Mau.jpg" 
+                        <img src="https://github.com/Foxyceoo/Foxy-s-Sheets/raw/main/mau.png" 
                              style="width:100%; border-radius:10px; border: 2px solid #00008C;">
                         """, unsafe_allow_html=True)
                 
