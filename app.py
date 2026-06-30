@@ -88,15 +88,18 @@ try:
             cat = categories[i]
             with tab:
                 search = st.text_input(f"Tìm tên bài hát trong mục **{cat.upper()}** (viết không dấu)", key=f"search_{cat}")
+                
+                # --- CHỈNH LỀ ĐÚNG Ở ĐÂY ---
+                if cat == "nber":
+                    with st.expander("🖼️ Xem ảnh mẫu Sheet số (NBER)"):
+                        st.markdown("""
+                        <img src="https://github.com/Foxyceooo/Foxy-s-Sheets/raw/main/Mau.jpg" 
+                             style="width:100%; border-radius:10px; border: 2px solid #00008C;">
+                        """, unsafe_allow_html=True)
+                
                 current_df = tab_data[cat]
                 if search:
                     current_df = current_df[current_df['Tên nhạc'].astype(str).str.contains(search, case=False, na=False)]
-                if cat == "nber":
-                    st.image("https://github.com/Foxyceoo/Foxy-s-Sheets/raw/main/Mau.jpg", 
-                             caption="Ảnh mẫu sheet số", 
-                             use_container_width=True)
-                
-                current_df = tab_data[cat]
                 
                 for _, row in current_df.iterrows():
                     # ĐỊNH NGHĨA BIẾN CẦN THIẾT
