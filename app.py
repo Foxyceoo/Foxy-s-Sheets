@@ -119,7 +119,7 @@ try:
                     if is_dl and (loai in ['free', 'event']): btn_label, btn_link = 'Tải về', download_url
                     elif is_anchor: btn_label, btn_link = f'Liên hệ mua: {gia}đ', "#top"
                     elif is_dl: btn_label, btn_link = f'Liên hệ mua: {gia}đ', download_url
-                    else: btn_label, btn_link = 'Đang cập nhật', "#"
+                    else: btn_label, btn_link = 'Loading...', "#"
 
                     st.markdown(f'<h3 style="font-size: 20px; margin: 5px 0;">{ten_nhac}</h3>', unsafe_allow_html=True)
                     st.markdown(f'<div style="font-size: 15px; color: #7F7F7F;">{casi} | Trans: {trans}</div>', unsafe_allow_html=True)
