@@ -35,7 +35,7 @@ try:
         st.title("--- Foxy.HQ ---")
 
         st.markdown("""
-        Chào mừng đến với Foxy🦀 – Ngôi nhà chính thức của Foxy!!!  
+        Chào mừng đến với Foxy.HQ – Ngôi nhà chính thức của Foxy🦀!!!  
         Chuyên sáng tạo và chia sẻ những sheet nhạc Sky "chill" nhất  
         Team: Foxy <3 Harinezumi  
         Focus: Tối ưu hóa âm nhạc và mang đến những giai điệu thư giãn cho cộng đồng Sky  
