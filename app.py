@@ -92,17 +92,18 @@ try:
                 # --- CHỈNH LỀ ĐÚNG Ở ĐÂY ---
                 if cat == "nber":
                     st.markdown("### Bộ chuyển đổi sheet số miễn phí")
-                    st.link_button(
-                        "Mở bộ chuyển đổi sheet số",
-                        "https://foxynumber.streamlit.app",
-                        use_container_width=True
-                    )
+
                     with st.expander("Xem ảnh mẫu Sheet số (NBER)"):
                         st.markdown("""
                             <img src="https://github.com/Foxyceoo/Foxy-s-Sheets/raw/main/mau.png"
                                  style="width:100%; border-radius:10px; border:2px solid #00008C;">
                         """, unsafe_allow_html=True)
                         
+                    st.link_button(
+                        "Mở bộ chuyển đổi sheet số",
+                        "https://foxynumber.streamlit.app",
+                        use_container_width=True
+                    )                   
                     continue
                 
                 current_df = tab_data[cat]
