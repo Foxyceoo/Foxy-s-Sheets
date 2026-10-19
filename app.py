@@ -83,7 +83,7 @@ try:
         tab_data = {cat: df.copy() for cat in categories}
         for cat in categories:
             if cat != "all":
-                tab_data[cat] = df[df['loại'] == cat]
+                tab_data[cat] = df[df['Loại'] == cat]
 
         for i, tab in enumerate(tabs):
             cat = categories[i]
