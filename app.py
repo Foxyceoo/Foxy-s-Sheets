@@ -105,6 +105,8 @@ try:
                         use_container_width=True
                     )                   
                     continue
+
+                search = st.text_input(f"Search in tab **{cat.upper()}**...", key=f"search_{cat}")
                 
                 current_df = tab_data[cat]
                 if search:
