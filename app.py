@@ -87,7 +87,6 @@ try:
         for i, tab in enumerate(tabs):
             cat = categories[i]
             with tab:
-                search = st.text_input(f"Search in tab **{cat.upper()}**...", key=f"search_{cat}")
                 
                 # --- CHỈNH LỀ ĐÚNG Ở ĐÂY ---
                 if cat == "nber":
