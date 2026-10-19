@@ -35,10 +35,10 @@ try:
         st.title("--- Foxy.HQ ---")
 
         st.markdown("""
-        Chào mừng đến với Foxy.HQ – Ngôi nhà chính thức của Foxy🦀!!!  
-        Chuyên sáng tạo và chia sẻ những sheet nhạc Sky "chill" nhất  
-        Team: Foxy <3 Harinezumi  
-        Focus: Tối ưu hóa âm nhạc và mang đến những giai điệu thư giãn cho cộng đồng Sky  
+        **Welcome to Foxy.HQ – The Official Home of Foxy🦀!!!**
+        Dedicated to creating and sharing the chillest Sky music sheets
+        Team: Foxy <3 Harinezumi
+        Focus: Optimizing music and bringing relaxing melodies to the Sky community  
         """)
 
         # CSS đã sửa lề
@@ -75,7 +75,7 @@ try:
         with c4: st.markdown('<a href="https://zalo.me/0355710935" target="_blank" style="display:block; text-align:center; padding:10px; background:#005fe7; color:white; border-radius:8px; text-decoration:none; font-weight:bold;"><i class="fas fa-comment-dots"></i> Zalo</a>', unsafe_allow_html=True)
         
         st.markdown("---")
-        st.markdown("**++ DANH SÁCH SHEET ++**")
+        st.markdown("**++ SHEET LIST ++**")
         
         categories = ["all", "event", "free", "txt", "nber", "upd"]
         tabs = st.tabs([cat.upper() for cat in categories])
@@ -83,12 +83,12 @@ try:
         tab_data = {cat: df.copy() for cat in categories}
         for cat in categories:
             if cat != "all":
-                tab_data[cat] = df[df['Loại'] == cat]
+                tab_data[cat] = df[df['Genre'] == cat]
 
         for i, tab in enumerate(tabs):
             cat = categories[i]
             with tab:
-                search = st.text_input(f"Tìm tên bài hát trong mục **{cat.upper()}** (viết không dấu)", key=f"search_{cat}")
+                search = st.text_input(f"Search in tab **{cat.upper()}**...", key=f"search_{cat}")
                 
                 # --- CHỈNH LỀ ĐÚNG Ở ĐÂY ---
                 if cat == "nber":
@@ -117,9 +117,9 @@ try:
                     is_anchor = download_url.strip() == "#top"
 
                     # SỬA LOGIC DỰA TRÊN BIẾN LOẠI ĐÃ ĐỊNH NGHĨA
-                    if is_dl and (loai in ['free', 'event']): btn_label, btn_link = 'Tải về', download_url
-                    elif is_anchor: btn_label, btn_link = f'Liên hệ mua: {gia}đ', "#top"
-                    elif is_dl: btn_label, btn_link = f'Liên hệ mua: {gia}đ', download_url
+                    if is_dl and (loai in ['free', 'event']): btn_label, btn_link = 'Download', download_url
+                    elif is_anchor: btn_label, btn_link = f'Sell: {gia}đ', "#top"
+                    elif is_dl: btn_label, btn_link = f'Sell: {gia}đ', download_url
                     else: btn_label, btn_link = 'Loading...', "#"
 
                     st.markdown(f'<h3 style="font-size: 20px; margin: 5px 0;">{ten_nhac}</h3>', unsafe_allow_html=True)
