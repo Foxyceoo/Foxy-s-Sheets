@@ -35,10 +35,10 @@ try:
         st.title("--- Foxy.HQ ---")
 
         st.markdown("""
-        **Welcome to Foxy.HQ – The Official Home of Foxy🦀!!!**
-        Dedicated to creating and sharing the chillest Sky music sheets
-        Team: Foxy <3 Harinezumi
-        Focus: Optimizing music and bringing relaxing melodies to the Sky community  
+        **Welcome to Foxy.HQ – The Official Home of Foxy🦀!!!**  
+        Dedicated to creating and sharing the chillest Sky music sheets  
+        Team: Foxy <3 Harinezumi  
+        Focus: Optimizing music and bringing relaxing melodies to the Sky community    
         """)
 
         # CSS đã sửa lề
