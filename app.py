@@ -63,8 +63,7 @@ try:
                     <tr><td>Cảm âm</td><td>1.000đ / khuông</td><td>20.000đ</td></tr>
                 </table>
             """, unsafe_allow_html=True)
-            st.caption("*== Đối với Cảm âm, Foxy sẽ báo giá chính xác sau khi hoàn thành ==  
-            Mua sheet liên hệ tớ nhé*")
+            st.caption("*== Đối với Cảm âm, Foxy sẽ báo giá chính xác sau khi hoàn thành ==  Mua sheet thì liên hệ tớ nhé*")
 
         # --- Nút mạng xã hội ---
         st.markdown('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">', unsafe_allow_html=True)
